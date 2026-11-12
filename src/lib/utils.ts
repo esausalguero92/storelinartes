@@ -1,3 +1,4 @@
+import { SITE } from "@/config/site";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -18,7 +19,7 @@ export function buildWhatsAppUrl(phone: string, message: string): string {
 // ─── SEO ──────────────────────────────────────────────────────────────────────
 
 export function buildCanonicalUrl(path: string): string {
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://linartes.com";
+  const base = SITE.url;
   return `${base}${path}`;
 }
 

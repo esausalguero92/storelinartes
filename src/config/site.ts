@@ -1,20 +1,33 @@
 // ─── Datos de la marca Linartes ───────────────────────────────────────────────
 // Valores públicos (se pueden ajustar con variables NEXT_PUBLIC_* en .env).
+// Se usa `||` (no `??`): una variable definida pero vacía — como las que pasa
+// Docker cuando un ARG no tiene valor — también cae al valor por defecto.
+
+/** Acepta "linartes.com" o "https://linartes.com/"; si es inválida usa el respaldo. */
+function normalizeUrl(raw: string | undefined, fallback: string): string {
+  const v = (raw ?? "").trim();
+  if (!v) return fallback;
+  try {
+    return new URL(/^https?:\/\//i.test(v) ? v : `https://${v}`).origin;
+  } catch {
+    return fallback;
+  }
+}
 
 export const SITE = {
   name: "Linartes",
   fullName: "Linartes Design",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://linartes.com",
+  url: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL, "https://linartes.com"),
   tagline: "Regalos personalizados que sí se sienten especiales.",
   description:
     "Diseñamos detalles únicos para personas y empresas que quieren regalar algo más que un producto. Personalización, diseño y presentación premium con envíos a toda Guatemala.",
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "50238606934",
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "50238606934",
   whatsappDefaultMsg:
-    process.env.NEXT_PUBLIC_WHATSAPP_DEFAULT_MSG ?? "¡Hola Linartes! Quiero información sobre sus regalos personalizados.",
-  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "",
-  facebook: process.env.NEXT_PUBLIC_FACEBOOK_URL ?? "https://www.facebook.com/linartesDesign/",
-  instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "https://www.instagram.com/linartes_design/",
-  tiktok: process.env.NEXT_PUBLIC_TIKTOK_URL ?? "",
+    process.env.NEXT_PUBLIC_WHATSAPP_DEFAULT_MSG || "¡Hola Linartes! Quiero información sobre sus regalos personalizados.",
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "",
+  facebook: process.env.NEXT_PUBLIC_FACEBOOK_URL || "https://www.facebook.com/linartesDesign/",
+  instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/linartes_design/",
+  tiktok: process.env.NEXT_PUBLIC_TIKTOK_URL || "",
 } as const;
 
 export const WA_MESSAGES = {
