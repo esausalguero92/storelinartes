@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // ─── Docker (Easypanel) ─────────────────────────────────────────────────────
+  // El Dockerfile activa NEXT_STANDALONE=1 para generar un servidor mínimo.
+  // En Hostinger (npm start) no se define y todo funciona como antes.
+  ...(process.env.NEXT_STANDALONE === "1" ? { output: "standalone" } : {}),
+
   // ─── Performance ────────────────────────────────────────────────────────────
   compress: true,
   poweredByHeader: false,

@@ -1,0 +1,21 @@
+# Nunca enviar secretos ni basura al build de Docker
+.env
+.env.*
+!.env.local.example
+.git
+.next
+node_modules
+npm-debug.log*
+*.zip
+*.tgz
+*.tsbuildinfo
+ziAwGtYI
+ziq9LuiT
+Zora.gt
+Claude outputs
+coverage
+tests
+README.md
+docs
+Dockerfile
+.dockerignore
