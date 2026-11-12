@@ -1,0 +1,70 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# COMPRA EN LÍNEA (Recurrente + Supabase + Telegram + Correo)
+# Configurar en hPanel → Node.js → Variables de entorno. NUNCA subir a git.
+# Mientras CHECKOUT_ENABLED no sea "true", la web funciona igual que antes.
+# ═══════════════════════════════════════════════════════════════════════════
+CHECKOUT_ENABLED=false
+SITE_URL=https://zora.gt
+# Orígenes extra permitidos para el checkout (separados por coma)
+ALLOWED_ORIGINS=https://www.zora.gt
+
+# ─── Supabase (Postgres) ────────────────────────────────────────────────────
+# Supabase → Project Settings → Database → Connection string → "Session pooler"
+# (URI). Reemplaza [YOUR-PASSWORD] por la contraseña de la base.
+# Ej: postgresql://postgres.<ref>:<clave>@aws-0-us-east-1.pooler.supabase.com:5432/postgres
+DATABASE_URL=
+# Alternativa a DATABASE_URL (dejar DATABASE_URL vacío para usar estas):
+# DATABASE_HOST=aws-0-us-east-1.pooler.supabase.com
+# DATABASE_PORT=5432
+# DATABASE_NAME=postgres
+# DATABASE_USER=postgres.<ref>
+# DATABASE_PASSWORD=
+# TLS (Supabase lo exige). Opcional: pegar el certificado CA de Supabase
+# (Database → SSL Configuration → Download certificate) en una línea con \n
+# DATABASE_CA_CERT=
+
+# ─── Recurrente (Configuración → Desarrolladores y API) ─────────────────────
+# La llave define si es modo prueba o producción.
+RECURRENTE_SECRET_KEY=
+# Secreto del webhook (empieza con whsec_). URL del webhook: https://zora.gt/api/webhooks/recurrente
+RECURRENTE_WEBHOOK_SECRET=
+
+# ─── Envío (quetzales) y límites ────────────────────────────────────────────
+SHIPPING_CITY_GTQ=0
+SHIPPING_INTERIOR_GTQ=0
+ORDER_MAX_UNITS=10
+ORDER_EXPIRY_MINUTES=60
+
+# ─── Cloudflare Turnstile (anti-bots, gratis) ───────────────────────────────
+TURNSTILE_SITE_KEY=
+TURNSTILE_SECRET_KEY=
+# Solo desarrollo local. En producción se ignora y el checkout se apaga.
+TURNSTILE_DISABLED=false
+
+# ─── Telegram ───────────────────────────────────────────────────────────────
+TELEGRAM_BOT_TOKEN=
+# 16-256 caracteres A-Z a-z 0-9 _ - (inventado por ti)
+TELEGRAM_WEBHOOK_SECRET=
+# Grupo donde llegan las ventas (ej. -1001234567890)
+TELEGRAM_TEAM_CHAT_ID=
+# Chats donde el bot acepta comandos (separados por coma)
+TELEGRAM_ALLOWED_CHAT_IDS=
+# Opcional: solo estos usuarios pueden cambiar stock (IDs numéricos, coma)
+TELEGRAM_ADMIN_USER_IDS=
+
+# ─── Correo (servidor SMTP propio) ──────────────────────────────────────────
+SMTP_HOST=smtp.hostinger.com
+# 465 = SSL directo · 587 = STARTTLS (obligatorio)
+SMTP_PORT=465
+SMTP_USER=notificaciones@zora.gt
+SMTP_PASSWORD=
+MAIL_FROM=ZORA <notificaciones@zora.gt>
+# Correos internos que reciben cada venta (coma)
+MAIL_TEAM_TO=
+
+# ─── Cron de hPanel (reintentos de notificaciones) ──────────────────────────
+# Cada 5 min: curl -s -X POST -H "Authorization: Bearer <CRON_SECRET>" https://zora.gt/api/cron/notifications
+CRON_SECRET=
+
+# Saltos de proxy confiables delante de Node (Hostinger = 1)
+TRUSTED_PROXY_HOPS=1

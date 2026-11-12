@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img" aria-label="Kit Damas de Honor">
+  <rect width="800" height="1000" fill="#F2F4E5"/>
+  <g fill="none" stroke="#404537" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="250" y="400" width="300" height="230"/>
+    <rect x="230" y="340" width="340" height="60"/>
+    <line x1="400" y1="340" x2="400" y2="630"/>
+    <path d="M400 340 C 350 270, 290 300, 330 340"/>
+    <path d="M400 340 C 450 270, 510 300, 470 340"/>
+    <path d="M400 470 c-18 -26 -55 -6 -30 22 l30 28 l30 -28 c25 -28 -12 -48 -30 -22 z" stroke="#CD7C50"/>
+  </g>
+  <text x="400.0" y="880" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="44" font-weight="300" fill="#404537">Kit Damas de Honor</text>
+  <text x="400.0" y="930" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="18" letter-spacing="5" fill="#CD7C50">FOTO PRÓXIMAMENTE</text>
+</svg>

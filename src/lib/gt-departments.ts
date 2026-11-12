@@ -1,0 +1,6 @@
+export const GT_DEPARTMENTS = [
+  "Guatemala", "Alta Verapaz", "Baja Verapaz", "Chimaltenango", "Chiquimula", "El Progreso",
+  "Escuintla", "Huehuetenango", "Izabal", "Jalapa", "Jutiapa", "Petén", "Quetzaltenango",
+  "Quiché", "Retalhuleu", "Sacatepéquez", "San Marcos", "Santa Rosa", "Sololá",
+  "Suchitepéquez", "Totonicapán", "Zacapa",
+] as const;

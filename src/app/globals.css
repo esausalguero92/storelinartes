@@ -1,0 +1,106 @@
+/* Google Fonts (antes de @tailwind: los @import deben ir primero) */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans:    'DM Sans', sans-serif;
+  --font-display: 'Fraunces', Georgia, serif;
+  --olive: #404537;
+  --sage:  #8D8E6D;
+  --cream: #FAF5EC;
+  --mist:  #F2F4E5;
+  --bark:  #5B5245;
+  --ink:   #3A342B;
+  --stone: #7F7B76;
+  --line:  #E4DED3;
+  --terra: #CD7C50;
+}
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+  body {
+    background-color: #FFFFFF;
+    color: var(--bark);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.65;
+    overflow-x: clip;
+  }
+  h1, h2, h3, h4 { color: var(--ink); }
+  ::selection { background-color: rgba(205,124,80,0.22); color: var(--ink); }
+  :focus-visible { outline: 2px solid var(--terra); outline-offset: 3px; border-radius: 2px; }
+  img { max-width: 100%; height: auto; }
+}
+
+@layer utilities {
+  .container-site {
+    width: 100%;
+    max-width: 1320px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(1rem, 3vw, 2.5rem);
+    padding-right: clamp(1rem, 3vw, 2.5rem);
+  }
+  .section-y { padding-top: 4rem; padding-bottom: 4rem; }
+  @media (min-width: 768px)  { .section-y { padding-top: 5.5rem; padding-bottom: 5.5rem; } }
+  @media (min-width: 1280px) { .section-y { padding-top: 7rem; padding-bottom: 7rem; } }
+
+  .product-landing-grid { grid-template-columns: 1fr; }
+  @media (min-width: 1024px) { .product-landing-grid { grid-template-columns: 1.1fr 1fr; } }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+}
+
+@layer components {
+  /* Etiqueta pequeña en mayúsculas (sobre títulos) */
+  .eyebrow {
+    @apply inline-block text-[11px] font-medium uppercase tracking-label text-terra;
+  }
+  /* Títulos editoriales */
+  .h-display {
+    @apply font-display font-light text-ink;
+    font-size: clamp(2.2rem, 5vw, 4.25rem);
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+  }
+  .h-section {
+    @apply font-display font-light text-ink;
+    font-size: clamp(1.8rem, 3.4vw, 2.9rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  /* Botones: rectos, mayúsculas espaciadas (estilo editorial) */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[12px] font-medium uppercase tracking-label transition-colors duration-300;
+  }
+  .btn-primary { @apply btn bg-olive text-mist hover:bg-olive-dark; }
+  .btn-terra   { @apply btn bg-terra text-white hover:bg-terra-dark; }
+  .btn-outline { @apply btn border border-olive text-olive hover:bg-olive hover:text-mist; }
+  .btn-light   { @apply btn bg-mist text-olive hover:bg-white; }
+  .btn-ghost-light { @apply btn border border-mist/60 text-mist hover:bg-mist hover:text-olive; }
+  .link-underline {
+    @apply relative inline-flex items-center gap-1.5 text-[12px] font-medium uppercase tracking-label text-olive;
+  }
+  .link-underline::after {
+    content: ""; position: absolute; left: 0; bottom: -4px; height: 1px; width: 100%;
+    background: currentColor; transform-origin: left; transition: transform 0.35s ease;
+  }
+  .link-underline:hover::after { transform: scaleX(0.4); }
+  .chip {
+    @apply inline-flex items-center px-4 py-2 text-[13px] border border-line bg-white text-bark;
+  }
+}

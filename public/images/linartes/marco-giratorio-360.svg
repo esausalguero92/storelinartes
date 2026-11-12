@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img" aria-label="Marco Giratorio 360°">
+  <rect width="800" height="1000" fill="#FAF5EC"/>
+  <g fill="none" stroke="#404537" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="290" y="300" width="220" height="280"/>
+    <rect x="315" y="325" width="170" height="200" stroke="#CD7C50"/>
+    <path d="M335 500 l45 -55 l35 40 l25 -25 l35 40" stroke="#CD7C50"/>
+    <circle cx="440" cy="375" r="16" stroke="#CD7C50"/>
+    <line x1="400" y1="580" x2="400" y2="640"/>
+    <ellipse cx="400" cy="650" rx="90" ry="16"/>
+    <path d="M230 440 a170 60 0 0 0 340 0" stroke-dasharray="6 12"/>
+    <path d="M560 452 l12 -14 l4 18" />
+  </g>
+  <text x="400.0" y="880" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="44" font-weight="300" fill="#404537">Marco Giratorio 360°</text>
+  <text x="400.0" y="930" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="18" letter-spacing="5" fill="#CD7C50">FOTO PRÓXIMAMENTE</text>
+</svg>
